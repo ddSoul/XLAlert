@@ -13,6 +13,7 @@
 		7B0872BB202061DC000FC394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0872BA202061DC000FC394 /* main.m */; };
 		7B0872C5202061DC000FC394 /* XLAlertTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0872C4202061DC000FC394 /* XLAlertTests.m */; };
 		7B0872D0202061DC000FC394 /* XLAlertUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0872CF202061DC000FC394 /* XLAlertUITests.m */; };
+		7B0872E0202065A3000FC394 /* XLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0872DF202065A3000FC394 /* XLAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		7B0872CB202061DC000FC394 /* XLAlertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLAlertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0872CF202061DC000FC394 /* XLAlertUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLAlertUITests.m; sourceTree = "<group>"; };
 		7B0872D1202061DC000FC394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B0872DE202065A3000FC394 /* XLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLAlert.h; sourceTree = "<group>"; };
+		7B0872DF202065A3000FC394 /* XLAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLAlert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,7 @@
 		7B0872AA202061DC000FC394 /* XLAlert */ = {
 			isa = PBXGroup;
 			children = (
+				7B0872DD202065A3000FC394 /* XLAlert */,
 				7B0872AB202061DC000FC394 /* AppDelegate.h */,
 				7B0872AC202061DC000FC394 /* AppDelegate.m */,
 				7B0872AE202061DC000FC394 /* ViewController.h */,
@@ -124,6 +128,15 @@
 				7B0872D1202061DC000FC394 /* Info.plist */,
 			);
 			path = XLAlertUITests;
+			sourceTree = "<group>";
+		};
+		7B0872DD202065A3000FC394 /* XLAlert */ = {
+			isa = PBXGroup;
+			children = (
+				7B0872DE202065A3000FC394 /* XLAlert.h */,
+				7B0872DF202065A3000FC394 /* XLAlert.m */,
+			);
+			path = XLAlert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B0872E0202065A3000FC394 /* XLAlert.m in Sources */,
 				7B0872B0202061DC000FC394 /* ViewController.m in Sources */,
 				7B0872BB202061DC000FC394 /* main.m in Sources */,
 				7B0872AD202061DC000FC394 /* AppDelegate.m in Sources */,
