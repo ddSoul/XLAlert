@@ -12,6 +12,7 @@
 @interface XLAlert() {
     
     @private
+        NSInteger _tag;
     
         NSString *_title;
         NSString *_message;
@@ -59,6 +60,12 @@ static XLAlert *_instance;
 /**
  * * * * * * * * * *
  */
+- (XLAlert * (^)(NSString *tag)) tag {
+    return ^(NSString *tag) {
+        _tag = [tag integerValue];
+        return self;
+    };
+}
 - (XLAlert * (^)(XLAlertControllerStyle style)) style {
     return ^(XLAlertControllerStyle style) {
         _style = style;
@@ -139,6 +146,11 @@ static XLAlert *_instance;
             if (_sureButtonColor) {
                 [sureAction setValue:_sureButtonColor forKey:@"_titleTextColor"];
             }
+            [alertController addAction:sureAction];
+        }else {
+            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction *action) {}];
             [alertController addAction:sureAction];
         }
         

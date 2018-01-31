@@ -30,25 +30,26 @@
 
 - (void)click {
     
-    Surehandler sureHandler = ^(UIAlertAction *action) {
-        NSLog(@"...............你点击了确认");
-    };
-    Cancelhandler cancelhandler = ^(UIAlertAction *action) {
-        NSLog(@"...............你点击了取消");
-    };
+//    Surehandler sureHandler = ^(UIAlertAction *action) {
+//        NSLog(@"...............你点击了确认");
+//    };
+//    Cancelhandler cancelhandler = ^(UIAlertAction *action) {
+//        NSLog(@"...............你点击了取消");
+//    };
     
-    XLAlert.shareAlert.
-    title(@"提示").
-    message(@"hello\n world").
-    style(1).
-    sureButtonColor([UIColor greenColor]).
-    cancleButtonColor([UIColor orangeColor]).
-    sureButtonTitle(@"ok").
-    cancelButtonTitle(@"不ok").
-    presentViewController(self).
-    suerHandler(sureHandler).
-    cancelHandler(cancelhandler).
-    show();
+    XLAlert.shareAlert
+    .style(XLAlertControllerStyleAlert)
+    .message(@"2222222222")
+    .presentViewController(self)
+    .show();
+    
+    XLAlert.shareAlert
+    .style(XLAlertControllerStyleAlert)
+    .message(@"hello\n world")
+    .presentViewController(self)
+    .show();
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -44,6 +44,8 @@ typedef void(^Cancelhandler)(UIAlertAction *action);
  * titsuerHandlerle:
  * cancelHandler:
  */
+- (XLAlert * (^)(NSString *tag)) tag;
+
 - (XLAlert * (^)(NSString *title)) title;
 - (XLAlert * (^)(NSString *message)) message;
 - (XLAlert * (^)(NSString *sureButtonTitle)) sureButtonTitle;
