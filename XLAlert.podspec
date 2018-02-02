@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "6.0"
+  # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -91,10 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "XLAlert/XLAlert/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "XLAlert/Alert/*.{h,m}"
+  s.exclude_files = "XLAlert/"
 
-  # s.public_header_files = "XLAlert/**/*.h"
+  # s.public_header_files = "XLAlert/Alert/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
