@@ -91,10 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "XLAlert/Alert/*.{h,m}"
+  s.source_files  = "Classes", "XLAlert/Alert/XLAlert.{h,m}"
   s.exclude_files = "XLAlert/"
 
-  # s.public_header_files = "XLAlert/Alert/**/*.h"
+  # s.public_header_files = "Classes", "XLAlert/Alert/XLAlert.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
