@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "XLAlert"
-  s.version      = "0.0.3"
+  s.version      = "0.0.1"
   s.summary      = "XLAlert"
 
   # This description is used to generate tags and improve search results.
@@ -39,7 +39,9 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT"
+  # s.license      = "MIT"
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'ddSoul' => '972424506@qq.com' }
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -68,7 +70,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "7.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
+  # s.ios.deployment_target = "8.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -80,7 +82,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ddSoul/XLAlert.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/ddSoul/XLAlert.git", :tag => "0.1.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
