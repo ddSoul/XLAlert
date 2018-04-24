@@ -9,26 +9,27 @@
 
 #import "XLAlert.h"
 
-@interface XLAlert() {
-    
-    @private
-        NSInteger _tag;
-    
-        NSString *_title;
-        NSString *_message;
-        NSString *_sureButtonTitle;
-        NSString *_cancelButtonTitle;
-    
-        UIColor *_cancelButtonColor;
-        UIColor *_sureButtonColor;
-    
-        Surehandler _sHandler;
-        Cancelhandler _cHandler;
-    
-        XLAlertControllerStyle _style;
-        UIViewController *_viewController;
-}
-@end;
+#define WeakSelf     __weak typeof(self) weakSelf = self;
+
+@interface XLAlert()
+
+@property (nonatomic, assign) NSInteger var_Tag;
+//
+@property (nonatomic, copy) NSString *var_Title;
+@property (nonatomic, copy) NSString *var_Message;
+@property (nonatomic, copy) NSString *var_SureButtonTitle;
+@property (nonatomic, copy) NSString *var_CancelButtonTitle;
+//
+@property (nonatomic, strong) UIColor *var_CancelButtonColor;
+@property (nonatomic, strong) UIColor *var_SureButtonColor;
+//
+@property (nonatomic, copy) Surehandler var_SHandler;
+@property (nonatomic, copy) Cancelhandler var_CHandler;
+//
+@property (nonatomic, assign) XLAlertControllerStyle var_Style;
+@property (nonatomic, strong) UIViewController *var_ViewController;
+
+@end
 
 @implementation XLAlert
 
@@ -36,7 +37,6 @@ static XLAlert *_instance;
 
 // 类方法命名规范 share类名|default类名|类名
 + (instancetype)shareAlert {
-    //return _instance;
     return [[self alloc] init];
 }
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
@@ -56,95 +56,106 @@ static XLAlert *_instance;
     return _instance;
 }
 
-
 /**
  * * * * * * * * * *
  */
 - (XLAlert * (^)(NSString *tag)) tag {
     return ^(NSString *tag) {
-        _tag = [tag integerValue];
-        return self;
+        WeakSelf;
+        weakSelf.var_Tag = [tag integerValue];
+        return _instance;
     };
 }
 - (XLAlert * (^)(XLAlertControllerStyle style)) style {
     return ^(XLAlertControllerStyle style) {
-        _style = style;
-        return self;
+        WeakSelf;
+        weakSelf.var_Style= style;
+        return _instance;
     };
 }
 - (XLAlert * (^)(UIViewController *presentViewController)) presentViewController {
     return ^(UIViewController *presentViewController) {
-        _viewController = presentViewController;
-        return self;
+        WeakSelf;
+        weakSelf.var_ViewController = presentViewController;
+        return _instance;
     };
 }
 - (XLAlert * (^)(NSString *KTitle)) title {
     return ^(NSString *title) {
-        _title = title;
-        return self;
+        WeakSelf;
+        weakSelf.var_Title = title;
+        return _instance;
     };
 }
 - (XLAlert * (^)(NSString *message)) message {
     return ^(NSString *message) {
-        _message = message;
-        return self;
+        WeakSelf;
+        weakSelf.var_Message = message;
+        return _instance;
     };
 }
 - (XLAlert * (^)(Surehandler)) suerHandler {
     return ^(Surehandler handler) {
-        _sHandler = handler;
-        return self;
+        WeakSelf;
+        weakSelf.var_SHandler = handler;
+        return _instance;
     };
 }
 - (XLAlert * (^)(Cancelhandler)) cancelHandler {
     return ^(Cancelhandler handler) {
-        _cHandler = handler;
-        return self;
+        WeakSelf;
+        weakSelf.var_CHandler = handler;
+        return _instance;
     };
 }
 - (XLAlert * (^)(UIColor *sureButtonColor)) sureButtonColor {
     return ^(UIColor *sureButtonColor) {
-        _sureButtonColor = sureButtonColor;
-        return self;
+        WeakSelf;
+        weakSelf.var_SureButtonColor = sureButtonColor;
+        return _instance;
     };
 }
 - (XLAlert * (^)(UIColor *cancleButtonColor)) cancleButtonColor {
     return ^(UIColor *cancleButtonColor) {
-        _cancelButtonColor = cancleButtonColor;
-        return self;
+        WeakSelf;
+        weakSelf.var_CancelButtonColor = cancleButtonColor;
+        return _instance;
     };
 }
 - (XLAlert * (^)(NSString *cancelButtonTitle)) cancelButtonTitle {
     return ^(NSString *cancelButtonTitle) {
-        _cancelButtonTitle = cancelButtonTitle;
-        return self;
+        WeakSelf;
+        weakSelf.var_CancelButtonTitle = cancelButtonTitle;
+        return _instance;
     };
 }
 - (XLAlert * (^)(NSString *sureButtonTitle)) sureButtonTitle {
     return ^(NSString *sureButtonTitle) {
-        _sureButtonTitle = sureButtonTitle;
-        return self;
+        WeakSelf;
+        weakSelf.var_SureButtonTitle = sureButtonTitle;
+        return _instance;
     };
 }
 
 - (XLAlert * (^)(void))show {
+    WeakSelf;
     return ^{
-        UIAlertControllerStyle _alertStyle = (UIAlertControllerStyle )_style;
+        UIAlertControllerStyle _alertStyle = (UIAlertControllerStyle )weakSelf.var_Style;
         /** 初始化*/
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_title
-                                                                                 message:_message
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:weakSelf.var_Title
+                                                                                 message:weakSelf.var_Message
                                                                           preferredStyle:_alertStyle];
         
         /** sure:如果有处理添加*/
-        if (_sHandler) {
+        if (weakSelf.var_SHandler) {
             
-            NSString *sureTitle = _sureButtonTitle?_sureButtonTitle:@"确定";
+            NSString *sureTitle = weakSelf.var_SureButtonTitle?weakSelf.var_SureButtonTitle:@"确定";
             UIAlertAction *sureAction = [UIAlertAction actionWithTitle:sureTitle
                                                                  style:UIAlertActionStyleDefault
-                                                               handler:_sHandler];
+                                                               handler:weakSelf.var_SHandler];
             
-            if (_sureButtonColor) {
-                [sureAction setValue:_sureButtonColor forKey:@"_titleTextColor"];
+            if (weakSelf.var_SureButtonColor) {
+                [sureAction setValue:weakSelf.var_SureButtonColor forKey:@"_titleTextColor"];
             }
             [alertController addAction:sureAction];
         }else {
@@ -155,21 +166,21 @@ static XLAlert *_instance;
         }
         
         /** cancel:如果有处理添加*/
-        if (_cHandler) {
+        if (weakSelf.var_CHandler) {
             
-            NSString *cancelTitle = _cancelButtonTitle?_cancelButtonTitle:@"取消";
+            NSString *cancelTitle = weakSelf.var_CancelButtonTitle?weakSelf.var_CancelButtonTitle:@"取消";
             UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle
                                                                    style:UIAlertActionStyleCancel
-                                                                 handler:_cHandler];
-            if (_cancelButtonColor) {
-                [cancleAction setValue:_cancelButtonColor forKey:@"_titleTextColor"];
+                                                                 handler:weakSelf.var_CHandler];
+            if (weakSelf.var_CancelButtonColor) {
+                [cancleAction setValue:weakSelf.var_CancelButtonColor forKey:@"_titleTextColor"];
             }
             [alertController addAction:cancleAction];
         }
         
-        [_viewController presentViewController:alertController animated:YES completion:nil];
+        [weakSelf.var_ViewController presentViewController:alertController animated:YES completion:nil];
         
-        return self;
+        return _instance;
     };
 }
 
